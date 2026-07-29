@@ -1,4 +1,4 @@
-<img width="1920" height="919" alt="image" src="https://github.com/user-attachments/assets/6dbf1fd0-f6ef-427d-a553-929a666ab472" />版本v2.15.1
+版本v2.15.1
 去除站点登录要求，增加磁力和BT搜索功能，可能有BUG，后续不会维护
 
 docker pull ghcr.io/whitlockxd/moviepilot:v2
