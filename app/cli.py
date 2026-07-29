@@ -848,7 +848,8 @@ def start(timeout: int, safe: bool) -> None:
     backend_state, _, _, _ = _managed_backend_status()
     frontend_state, _, _, _ = _managed_frontend_status()
     if backend_state == "stopped" and frontend_state == "stopped":
-        _best_effort_auto_update()
+        pass  # 已禁用自动更新，防止覆盖自定义爬虫修改
+        # _best_effort_auto_update()
 
     backend_result = _start_backend_service(timeout=timeout, safe=safe)
     backend_runtime = backend_result["runtime"]
@@ -902,7 +903,7 @@ def restart(start_timeout: int, stop_timeout: int, force: bool) -> None:
     """重启本地 MoviePilot 前后端服务"""
     _stop_frontend_service(timeout=stop_timeout, force=force)
     _stop_backend_service(timeout=stop_timeout, force=force)
-    _best_effort_auto_update()
+    # _best_effort_auto_update()  # 已禁用自动更新，防止覆盖自定义爬虫修改
     backend_result = _start_backend_service(timeout=start_timeout)
     frontend_result = _start_frontend_service(timeout=start_timeout, backend_port=int(backend_result["runtime"]["port"]))
     click.echo("MoviePilot 已重启")

@@ -244,8 +244,8 @@ class ConfigModel(BaseModel):
     ALIPAN_APP_ID: str = "ac1bf04dc9fd4d9aaabb65b4a668d403"
 
     # ==================== 系统升级配置 ====================
-    # 重启自动升级
-    MOVIEPILOT_AUTO_UPDATE: str = "release"
+    # 重启自动升级（已禁用，防止覆盖自定义爬虫修改）
+    MOVIEPILOT_AUTO_UPDATE: str = "false"
     # 自动检查和更新站点资源包（站点索引、认证等）
     AUTO_UPDATE_RESOURCE: bool = True
 
