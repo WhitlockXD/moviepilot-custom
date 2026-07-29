@@ -5,3 +5,4 @@ docker pull ghcr.io/whitlockxd/moviepilot:v2
 
 国内用
 ghcr.nju.edu.cn/whitlockxd/moviepilot:v2
+![Uploading image.png…]()
