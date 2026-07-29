@@ -157,7 +157,8 @@ RUN cp -f /app/docker/nginx.common.conf /etc/nginx/common.conf \
     && locale-gen zh_CN.UTF-8
 
 # 预装 CloakBrowser 浏览器内核，避免容器启动时从国外服务器下载（约206MB）
-RUN gosu moviepilot:moviepilot python -m cloakbrowser install
+RUN python -m cloakbrowser install \
+    && chown -R moviepilot:moviepilot ${HOME}/.cloakbrowser
 
 EXPOSE 3000
 VOLUME [ "${CONFIG_DIR}" ]
