@@ -9,10 +9,11 @@ from app.agent.tools.impl.query_downloaders import QueryDownloadersTool
 from app.agent.tools.impl.query_download_tasks import QueryDownloadTasksTool
 from app.agent.tools.impl.query_library_exists import QueryLibraryExistsTool
 from app.agent.tools.impl.query_library_latest import QueryLibraryLatestTool
-from app.agent.tools.impl.query_sites import QuerySitesTool
-from app.agent.tools.impl.update_site import UpdateSiteTool
-from app.agent.tools.impl.query_site_userdata import QuerySiteUserdataTool
-from app.agent.tools.impl.test_site import TestSiteTool
+# PT站点功能已移除
+# from app.agent.tools.impl.query_sites import QuerySitesTool
+# from app.agent.tools.impl.update_site import UpdateSiteTool
+# from app.agent.tools.impl.query_site_userdata import QuerySiteUserdataTool
+# from app.agent.tools.impl.test_site import TestSiteTool
 from app.agent.tools.impl.query_subscribes import QuerySubscribesTool
 from app.agent.tools.impl.query_subscribe_shares import QuerySubscribeSharesTool
 from app.agent.tools.impl.query_rule_groups import QueryRuleGroupsTool
@@ -54,7 +55,7 @@ from app.agent.tools.impl.run_workflow import RunWorkflowTool
 from app.agent.tools.impl.query_personas import QueryPersonasTool
 from app.agent.tools.impl.switch_persona import SwitchPersonaTool
 from app.agent.tools.impl.update_persona_definition import UpdatePersonaDefinitionTool
-from app.agent.tools.impl.update_site_cookie import UpdateSiteCookieTool
+# from app.agent.tools.impl.update_site_cookie import UpdateSiteCookieTool  # PT站点功能已移除
 from app.agent.tools.impl.delete_download_tasks import DeleteDownloadTasksTool
 from app.agent.tools.impl.delete_download_history import DeleteDownloadHistoryTool
 from app.agent.tools.impl.delete_transfer_history import DeleteTransferHistoryTool
@@ -133,11 +134,12 @@ class MoviePilotToolFactory:
         DeleteTransferHistoryTool,
         UpdateDownloadTasksTool,
         QueryDownloadersTool,
-        QuerySitesTool,
-        UpdateSiteTool,
-        QuerySiteUserdataTool,
-        TestSiteTool,
-        UpdateSiteCookieTool,
+        # PT站点功能已移除
+        # QuerySitesTool,
+        # UpdateSiteTool,
+        # QuerySiteUserdataTool,
+        # TestSiteTool,
+        # UpdateSiteCookieTool,
         GetRecommendationsTool,
         QueryLibraryExistsTool,
         QueryLibraryLatestTool,

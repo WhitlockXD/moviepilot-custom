@@ -54,18 +54,19 @@ class Command(metaclass=Singleton):
         self._commands = {}
         # 内建命令集合
         self._preset_commands = {
-            "/cookiecloud": {
-                "id": "cookiecloud",
-                "type": "scheduler",
-                "description": "同步站点",
-                "category": "站点",
-            },
-            "/sites": {
-                "func": SiteChain().remote_list,
-                "description": "管理站点",
-                "category": "站点",
-                "data": {},
-            },
+            # PT站点功能已移除
+            # "/cookiecloud": {
+            #     "id": "cookiecloud",
+            #     "type": "scheduler",
+            #     "description": "同步站点",
+            #     "category": "站点",
+            # },
+            # "/sites": {
+            #     "func": SiteChain().remote_list,
+            #     "description": "管理站点",
+            #     "category": "站点",
+            #     "data": {},
+            # },
             "/mediaserver_sync": {
                 "id": "mediaserver_sync",
                 "type": "scheduler",

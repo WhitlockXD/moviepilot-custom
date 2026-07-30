@@ -408,11 +408,12 @@ class Scheduler(ConfigReloadMixin, metaclass=SingletonClass):
             # 各服务的运行状态
             mediaserver_chain = MediaServerChain()
             self._jobs = {
-                "cookiecloud": {
-                    "name": "同步CookieCloud站点",
-                    "func": SiteChain().sync_cookies,
-                    "running": False,
-                },
+                # PT站点功能已移除
+                # "cookiecloud": {
+                #     "name": "同步CookieCloud站点",
+                #     "func": SiteChain().sync_cookies,
+                #     "running": False,
+                # },
                 "mediaserver_sync": {
                     "name": "同步媒体服务器",
                     "func": mediaserver_chain.sync,
@@ -477,7 +478,7 @@ class Scheduler(ConfigReloadMixin, metaclass=SingletonClass):
                 },
                 "sitedata_refresh": {
                     "name": "站点数据刷新",
-                    "func": SiteChain().refresh_userdatas,
+                    "func": lambda: None,  # PT站点功能已移除
                     "running": False,
                 },
                 "recommend_refresh": {
@@ -519,20 +520,20 @@ class Scheduler(ConfigReloadMixin, metaclass=SingletonClass):
                 executors={"default": ThreadPoolExecutor(settings.CONF.scheduler)},
             )
 
-            # CookieCloud定时同步
-            if (
-                    settings.COOKIECLOUD_INTERVAL
-                    and str(settings.COOKIECLOUD_INTERVAL).isdigit()
-            ):
-                self._scheduler.add_job(
-                    self.start,
-                    "interval",
-                    id="cookiecloud",
-                    name="同步CookieCloud站点",
-                    minutes=int(settings.COOKIECLOUD_INTERVAL),
-                    next_run_time=datetime.now(pytz.timezone(settings.TZ)) + timedelta(minutes=5),
-                    kwargs={"job_id": "cookiecloud"},
-                )
+            # CookieCloud定时同步（PT站点功能已移除）
+            # if (
+            #         settings.COOKIECLOUD_INTERVAL
+            #         and str(settings.COOKIECLOUD_INTERVAL).isdigit()
+            # ):
+            #     self._scheduler.add_job(
+            #         self.start,
+            #         "interval",
+            #         id="cookiecloud",
+            #         name="同步CookieCloud站点",
+            #         minutes=int(settings.COOKIECLOUD_INTERVAL),
+            #         next_run_time=datetime.now(pytz.timezone(settings.TZ)) + timedelta(minutes=5),
+            #         kwargs={"job_id": "cookiecloud"},
+            #     )
 
             # 按媒体服务器分别注册自动同步任务
             mediaserver_schedules = self._build_mediaserver_sync_schedules(
@@ -692,16 +693,16 @@ class Scheduler(ConfigReloadMixin, metaclass=SingletonClass):
                 kwargs={"job_id": "user_auth"},
             )
 
-            # 站点数据刷新
-            if settings.SITEDATA_REFRESH_INTERVAL:
-                self._scheduler.add_job(
-                    self.start,
-                    "interval",
-                    id="sitedata_refresh",
-                    name="站点数据刷新",
-                    minutes=settings.SITEDATA_REFRESH_INTERVAL * 60,
-                    kwargs={"job_id": "sitedata_refresh"},
-                )
+            # 站点数据刷新（PT站点功能已移除）
+            # if settings.SITEDATA_REFRESH_INTERVAL:
+            #     self._scheduler.add_job(
+            #         self.start,
+            #         "interval",
+            #         id="sitedata_refresh",
+            #         name="站点数据刷新",
+            #         minutes=settings.SITEDATA_REFRESH_INTERVAL * 60,
+            #         kwargs={"job_id": "sitedata_refresh"},
+            #     )
 
             # 推荐缓存
             self._scheduler.add_job(
@@ -1514,10 +1515,12 @@ class Scheduler(ConfigReloadMixin, metaclass=SingletonClass):
 
     def user_auth(self):
         """
-        用户认证检查
+        用户认证检查（PT站点功能已移除，直接返回）
         """
-        if SitesHelper().auth_level >= 2:
-            return
+        return
+        # 以下代码已禁用
+        # if SitesHelper().auth_level >= 2:
+        #     return
         # 最大重试次数
         __max_try__ = 30
         if self._auth_count > __max_try__:
